@@ -101,6 +101,7 @@ class ErrorResult(WeChatResult):
 class DownLoadBillResult(object):
     def __init__(self, resp):
         self.text = resp.text
+        self.content = resp.content
 
 
 class CloseOrderResult(WeChatResult):
