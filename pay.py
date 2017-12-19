@@ -8,7 +8,16 @@ from collections import OrderedDict
 from .models import WECHAT_CLASS
 
 
-class WeChatPay(object):
+class WeChatScanPay(object):
+    """
+    documentation
+    https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=6_1
+    appid: 公众号id
+    mch_id: 商户id
+    notify_url: 通知URL
+    pay_secret: 秘钥
+    """
+
     def __init__(self, appid, mch_id, notify_url, pay_secret):
         self.appid = appid
         self.mch_id = mch_id
@@ -186,4 +195,3 @@ class WeChatPay(object):
             'sign': self._gen_sign(data)
         })
         return self._request_post(self.mch_base + 'tools/shorturl', self.to_xml(data))
-
