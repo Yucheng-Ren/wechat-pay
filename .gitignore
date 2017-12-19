@@ -1,2 +1,5 @@
 *.pyc
 .idea/*
+*.egg-info
+.DS_Store
+dist/
