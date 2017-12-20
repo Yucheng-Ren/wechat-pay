@@ -18,12 +18,14 @@ class WeChatScanPay(object):
     pay_secret: 秘钥
     """
 
-    def __init__(self, appid, mch_id, notify_url, pay_secret):
+    def __init__(self, appid, mch_id, notify_url, pay_secret, cert=None, key=None):
         self.appid = appid
         self.mch_id = mch_id
         self.mch_base = 'https://api.mch.weixin.qq.com/'
         self.notify_url = notify_url
         self.pay_secret = pay_secret
+        self.cert = cert
+        self.key = key
 
     @staticmethod
     def random_str():
@@ -104,9 +106,14 @@ class WeChatScanPay(object):
     def _parse_result(resp, class_key):
         return WECHAT_CLASS[class_key](resp)
 
-    def _request_post(self, url, data):
+    def _request_post(self, url, data, is_cert=False):
         headers = {'Content-Type': 'application/xml'}
-        resp = requests.post(url, data=data, headers=headers)
+        if is_cert:
+            if not self.cert or not self.key:
+                raise ValueError
+            resp = requests.post(url, data=data, headers=headers, cert=(self.cert, self.key))
+        else:
+            resp = requests.post(url, data=data, headers=headers)
         return self._parse_result(resp, url.split('/')[-1])
 
     def sendbox_sign(self):
@@ -195,3 +202,48 @@ class WeChatScanPay(object):
             'sign': self._gen_sign(data)
         })
         return self._request_post(self.mch_base + 'tools/shorturl', self.to_xml(data))
+
+    def refund(self, out_trade_no, out_refund_no, total_fee, refund_fee, sign_type='MD5', refund_fee_type='CNY'):
+        '''
+        :param out_trade_no: 商户订单号
+        :param out_refund_no: 商户退款单号
+        :param total_fee: 订单总金额
+        :param refund_fee: 退款总金额
+        :param sign_type: 签名方法
+        :param refund_fee_type: 退款币种
+        :return:
+        '''
+        data = {
+            'appid': self.appid,
+            'mch_id': self.mch_id,
+            'nonce_str': self.random_str(),
+            'sign_type': sign_type,
+            'out_trade_no': out_trade_no,
+            'out_refund_no': out_refund_no,
+            'total_fee': total_fee,
+            'refund_fee': refund_fee,
+            'refund_fee_type': refund_fee_type
+        }
+        data.update({
+            'sign': self._gen_sign(data)
+        })
+        return self._request_post(self.mch_base + 'secapi/pay/refund', self.to_xml(data), is_cert=True)
+
+    def refund_query(self, out_refund_no, sign_type='MD5'):
+        '''
+        :param out_refund_no: 商户退款单号
+        :param sign_type: 签名方法
+        :return:
+        '''
+        data = {
+            'appid': self.appid,
+            'mch_id': self.mch_id,
+            'nonce_str': self.random_str(),
+            'sign_type': sign_type,
+            'out_refund_no': out_refund_no,
+        }
+        data.update({
+            'sign': self._gen_sign(data)
+        })
+        return self._request_post(self.mch_base + 'pay/refundquery', self.to_xml(data))
+
