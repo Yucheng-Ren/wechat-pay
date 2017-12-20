@@ -8,7 +8,7 @@ from collections import OrderedDict
 from .models import WECHAT_CLASS
 
 
-class WeChatScanPay(object):
+class WeChatPay(object):
     """
     documentation
     https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=6_1
@@ -16,6 +16,8 @@ class WeChatScanPay(object):
     mch_id: 商户id
     notify_url: 通知URL
     pay_secret: 秘钥
+    cert: path to your apiclient_cert.pem (download from wechat website)
+    key: path to your apiclient_key.pem (download from wechat website)
     """
 
     def __init__(self, appid, mch_id, notify_url, pay_secret, cert=None, key=None):

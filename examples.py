@@ -1,12 +1,15 @@
-from wechatpay.pay import WeChatScanPay
+from wechatpay.pay import WeChatPay
 
 WECHAT_APPID = 'your_app_id'
 WECHAT_MCH_ID = 'your_mch_id'
 WECHAT_NOTIFY_URL = 'your_notify_url'
 WECHAT_PAY_SECRET = 'your_pay_secret'
+WECHAT_CERT = 'path/to/your_cert.pem'
+WECHAT_KEY = 'patch/to/your_key.pem'
 
-sp = WeChatScanPay(WECHAT_APPID, WECHAT_MCH_ID,
-                   WECHAT_NOTIFY_URL, WECHAT_PAY_SECRET)
+
+sp = WeChatPay(WECHAT_APPID, WECHAT_MCH_ID,
+                   WECHAT_NOTIFY_URL, WECHAT_PAY_SECRET, WECHAT_CERT, WECHAT_KEY)
 
 
 def unifiedorder(out_trade_no, body, total_fee, client_ip):

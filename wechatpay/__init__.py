@@ -1,1 +1,1 @@
-from .pay import WeChatScanPay
+from .pay import WeChatPay
