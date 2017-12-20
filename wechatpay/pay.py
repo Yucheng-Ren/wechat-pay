@@ -205,7 +205,7 @@ class WeChatPay(object):
         })
         return self._request_post(self.mch_base + 'tools/shorturl', self.to_xml(data))
 
-    def refund(self, out_trade_no, out_refund_no, total_fee, refund_fee, sign_type='MD5', refund_fee_type='CNY'):
+    def refund(self, out_trade_no, out_refund_no, total_fee, refund_fee, sign_type='MD5', refund_fee_type='CNY', **kwargs):
         '''
         :param out_trade_no: 商户订单号
         :param out_refund_no: 商户退款单号
@@ -226,12 +226,13 @@ class WeChatPay(object):
             'refund_fee': refund_fee,
             'refund_fee_type': refund_fee_type
         }
+        data.update(kwargs)
         data.update({
             'sign': self._gen_sign(data)
         })
         return self._request_post(self.mch_base + 'secapi/pay/refund', self.to_xml(data), is_cert=True)
 
-    def refund_query(self, out_refund_no, sign_type='MD5'):
+    def refund_query(self, out_refund_no, sign_type='MD5', **kwargs):
         '''
         :param out_refund_no: 商户退款单号
         :param sign_type: 签名方法
@@ -244,6 +245,7 @@ class WeChatPay(object):
             'sign_type': sign_type,
             'out_refund_no': out_refund_no,
         }
+        data.update(kwargs)
         data.update({
             'sign': self._gen_sign(data)
         })
