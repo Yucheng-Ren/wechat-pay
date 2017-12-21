@@ -5,6 +5,8 @@ This is an unofficial sdk for WeChat Pay
 
 [WeChat Pay official API doc](https://pay.weixin.qq.com/wiki/doc/api/index.html)
 
+[Doc for this project](https://wechat-pay-sdk.readthedocs.io/en/latest/)
+
 install by pip
 
     pip install wechat-pay-sdk
