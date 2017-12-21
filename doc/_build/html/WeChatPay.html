@@ -1,0 +1,326 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WeChatPay &#8212; wechat-pay-sdk 0.4 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="WeChatResult" href="WeChatResult.html" />
+    <link rel="prev" title="Welcome to wechat-pay-sdk’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wechatpay">
+<h1>WeChatPay<a class="headerlink" href="#wechatpay" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="WeChatPay">
+<em class="property">class </em><code class="descname">WeChatPay</code><span class="sig-paren">(</span><em>appid</em>, <em>mch_id</em>, <em>notify_url</em>, <em>pay_secret</em>, <em>cert=None</em>, <em>key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="WeChatPay.unifiedorder">
+<code class="descname">unifiedorder</code><span class="sig-paren">(</span><em>device_info</em>, <em>sign_type</em>, <em>fee_type</em>, <em>trade_type</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.unifiedorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form a new order. more information at
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1">API</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>device_info</strong> – exception type</li>
+<li><strong>sign_type</strong> – sign method(MD5 or HMAC-SHA256)</li>
+<li><strong>fee_type</strong> – currency type</li>
+<li><strong>attach</strong> – attach data</li>
+<li><strong>out_trade_no</strong> – order id (should be unique in your system)</li>
+<li><strong>trade_type</strong> – <a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=4_2">(JSAPI，NATIVE，APP)</a></li>
+<li><strong>body</strong> – order description</li>
+<li><strong>detail</strong> – item detail</li>
+<li><strong>total_fee</strong> – the amount of fee</li>
+<li><strong>spbill_create_ip</strong> – client ip address</li>
+<li><strong>time_start</strong> – order generate time (format yyyyMMddHHmmss)</li>
+<li><strong>time_expire</strong> – order expire time (format yyyyMMddHHmmss)</li>
+<li><strong>goods_tag</strong> – <a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/tools/sp_coupon.php?chapter=12_1">discount info</a></li>
+<li><strong>product_id</strong> – item id</li>
+<li><strong>limit_pay</strong> – no_credit</li>
+<li><strong>openid</strong> – user wechat openid</li>
+<li><strong>scene_info</strong> – scenario info</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="WeChatResult.html#UnifiedorderResult" title="UnifiedorderResult"><code class="xref py py-class docutils literal"><span class="pre">UnifiedorderResult</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.random_str">
+<code class="descname">random_str</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.random_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.verify_notify">
+<code class="descname">verify_notify</code><span class="sig-paren">(</span><em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.verify_notify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify WeChat payment notification</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>req</strong> – Request object from requests</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="WeChatResult.html#NotifyResult" title="NotifyResult"><code class="xref py py-class docutils literal"><span class="pre">NotifyResult</span></code></a> or <a class="reference internal" href="WeChatResult.html#ErrorResult" title="ErrorResult"><code class="xref py py-class docutils literal"><span class="pre">ErrorResult</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.to_xml">
+<code class="descname">to_xml</code><span class="sig-paren">(</span><em>dct</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.to_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer a dict to xml string
+:param dct: data dict to send
+:rtype: string</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.sendbox_sign">
+<code class="descname">sendbox_sign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.sendbox_sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate sendbox secret key
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=23_1">API</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="WeChatResult.html#SendBoxKey" title="SendBoxKey"><code class="xref py py-class docutils literal"><span class="pre">SendBoxKey</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.query_order">
+<code class="descname">query_order</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.query_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query order from WeChat
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_2">API</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>transaction_id</strong> – wechat order id</li>
+<li><strong>out_trade_no</strong> – order id (transaction_id and out_trade_no only need one)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="WeChatResult.html#OrderResult" title="OrderResult"><code class="xref py py-class docutils literal"><span class="pre">OrderResult</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.downloadbill">
+<code class="descname">downloadbill</code><span class="sig-paren">(</span><em>bill_date</em>, <em>sign_type='MD5'</em>, <em>bill_type='ALL'</em>, <em>tar_type='GZIP'</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.downloadbill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download bills
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_6">API</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bill_date</strong> – the date of bill (format yyyymmdd)</li>
+<li><strong>bill_type</strong> – the type of bill (ALL, SUCCESS, REFUND, RECHARGE_REFUND)</li>
+<li><strong>tar_type</strong> – tar type(GZIP)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="WeChatResult.html#DownLoadBillResult" title="DownLoadBillResult"><code class="xref py py-class docutils literal"><span class="pre">DownLoadBillResult</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.close_order">
+<code class="descname">close_order</code><span class="sig-paren">(</span><em>out_trade_no</em>, <em>sign_type='MD5'</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.close_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close order
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_3">API</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>out_trade_no</strong> – order id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="WeChatResult.html#CloseOrderResult" title="CloseOrderResult"><code class="xref py py-class docutils literal"><span class="pre">CloseOrderResult</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.short_url">
+<code class="descname">short_url</code><span class="sig-paren">(</span><em>long_url</em>, <em>sign_type='MD5'</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.short_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert long url to short url and make the Qr code more recognizable
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_9">API</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>long_url</strong> – long url</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="WeChatResult.html#ShortUrlResult" title="ShortUrlResult"><code class="xref py py-class docutils literal"><span class="pre">ShortUrlResult</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.refund">
+<code class="descname">refund</code><span class="sig-paren">(</span><em>out_trade_no</em>, <em>out_refund_no</em>, <em>total_fee</em>, <em>refund_fee</em>, <em>sign_type='MD5'</em>, <em>refund_fee_type='CNY'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.refund" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for refund
+<strong>this method need you to proide your cert.pem and key.pem file</strong>
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_4">API</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>transaction_id</strong> – wechat order id</li>
+<li><strong>out_trade_no</strong> – order id (transaction_id and out_trade_no only need one)</li>
+<li><strong>out_refund_no</strong> – refund id</li>
+<li><strong>total_fee</strong> – total order fee</li>
+<li><strong>refund_fee</strong> – refund total fee</li>
+<li><strong>refund_fee_type</strong> – currency type (CNY)</li>
+<li><strong>refund_desc</strong> – refund reason</li>
+<li><strong>refund_account</strong> – refund account</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">:py:class::<cite>RefundResult</cite></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WeChatPay.refund_query">
+<code class="descname">refund_query</code><span class="sig-paren">(</span><em>out_refund_no</em>, <em>sign_type='MD5'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatPay.refund_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query refund process
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_5">API</a>
+:param transaction_id: wechat order id
+:param out_trade_no: order id
+:param out_refund_no: refund id
+:param refund_id: refund id from WeChat (transaction_id, out_trade_no, out_refund_no, refund_id only need to one)
+:param offset: query offset
+:rtype: :py:class::<cite>RefundQueryResult</cite></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+
+    <strong>Author: Zack Ren</strong>
+    <br>
+    <strong>Email: m6106918@gmail.com</strong>
+
+</body>
+</html><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to wechat-pay-sdk’s documentation!</a></li>
+      <li>Next: <a href="WeChatResult.html" title="next chapter">WeChatResult</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">WeChatPay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WeChatResult.html">WeChatResult</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Zack Ren.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/WeChatPay.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

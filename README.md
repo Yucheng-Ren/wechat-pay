@@ -36,5 +36,9 @@ result = sp.unifiedorder(body=body, out_trade_no=out_trade_no, total_fee=total_f
 # 查询订单
 result = sp.query_order(out_trade_no=out_trade_no)
 
+if result.success:
+    # your code
+    pass
+
 ```
 

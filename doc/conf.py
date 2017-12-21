@@ -76,7 +76,6 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
-
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -100,19 +99,21 @@ html_static_path = ['_static']
 #
 # This is required for the alabaster theme
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
+show_related = True
 html_sidebars = {
     '**': [
+        'author.html',
         'relations.html',  # needs 'show_related': True theme option to display
         'searchbox.html',
+        'localtoc.html',
+        'globaltoc.html',
     ]
 }
-
 
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'wechat-pay-sdkdoc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -142,7 +143,6 @@ latex_documents = [
      u'Zack Ren', 'manual'),
 ]
 
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
@@ -151,7 +151,6 @@ man_pages = [
     (master_doc, 'wechat-pay-sdk', u'wechat-pay-sdk Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 
@@ -163,6 +162,3 @@ texinfo_documents = [
      author, 'wechat-pay-sdk', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-

@@ -1,0 +1,266 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WeChatResult &#8212; wechat-pay-sdk 0.4 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="WeChatPay" href="WeChatPay.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wechatresult">
+<h1>WeChatResult<a class="headerlink" href="#wechatresult" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="WeChatResult">
+<em class="property">class </em><code class="descname">WeChatResult</code><span class="sig-paren">(</span><em>resp</em><span class="sig-paren">)</span><a class="headerlink" href="#WeChatResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="WeChatResult.resp">
+<code class="descname">resp</code><a class="headerlink" href="#WeChatResult.resp" title="Permalink to this definition">¶</a></dt>
+<dd><p>resp is the instance of Response class from <a class="reference external" href="http://docs.python-requests.org/en/master/">requests</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="WeChatResult.success">
+<code class="descname">success</code><a class="headerlink" href="#WeChatResult.success" title="Permalink to this definition">¶</a></dt>
+<dd><p>success is used to determine whether this request is successful</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="WeChatResult.result">
+<code class="descname">result</code><a class="headerlink" href="#WeChatResult.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>result is a python dict which contains the response data that parsed from xml</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="WeChatResult.error_msg">
+<code class="descname">error_msg</code><a class="headerlink" href="#WeChatResult.error_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>error_msg contains the error message if anything went wrong</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="UnifiedorderResult">
+<em class="property">class </em><code class="descname">UnifiedorderResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#UnifiedorderResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="UnifiedorderResult.trade_type">
+<code class="descname">trade_type</code><a class="headerlink" href="#UnifiedorderResult.trade_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=4_2">(JSAPI，NATIVE，APP)</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UnifiedorderResult.prepay_id">
+<code class="descname">prepay_id</code><a class="headerlink" href="#UnifiedorderResult.prepay_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate by WeChat for more operation (valid in 2 hours)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="UnifiedorderResult.code_url">
+<code class="descname">code_url</code><a class="headerlink" href="#UnifiedorderResult.code_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Qr code url for payment</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="NotifyResult">
+<em class="property">class </em><code class="descname">NotifyResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#NotifyResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every key in result dict refer to a attribute of this class
+<a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_7">API</a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ErrorResult">
+<em class="property">class </em><code class="descname">ErrorResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#ErrorResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ErrorResult.success">
+<code class="descname">success</code><a class="headerlink" href="#ErrorResult.success" title="Permalink to this definition">¶</a></dt>
+<dd><p>in this case success is False</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ErrorResult.error_msg">
+<code class="descname">error_msg</code><a class="headerlink" href="#ErrorResult.error_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>error message dict</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="SendBoxKey">
+<em class="property">class </em><code class="descname">SendBoxKey</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#SendBoxKey" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="SendBoxKey.key">
+<code class="descname">key</code><a class="headerlink" href="#SendBoxKey.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>send box secret key</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="OrderResult">
+<em class="property">class </em><code class="descname">OrderResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#OrderResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="OrderResult.trade_state">
+<code class="descname">trade_state</code><a class="headerlink" href="#OrderResult.trade_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>the state of this order</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OrderResult.out_trade_no">
+<code class="descname">out_trade_no</code><a class="headerlink" href="#OrderResult.out_trade_no" title="Permalink to this definition">¶</a></dt>
+<dd><p>order id</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OrderResult.total_fee">
+<code class="descname">total_fee</code><a class="headerlink" href="#OrderResult.total_fee" title="Permalink to this definition">¶</a></dt>
+<dd><p>amount of fee of this order</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="DownLoadBillResult">
+<em class="property">class </em><code class="descname">DownLoadBillResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#DownLoadBillResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="DownLoadBillResult.text">
+<code class="descname">text</code><a class="headerlink" href="#DownLoadBillResult.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>unicode of the bill content</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DownLoadBillResult.content">
+<code class="descname">content</code><a class="headerlink" href="#DownLoadBillResult.content" title="Permalink to this definition">¶</a></dt>
+<dd><p>bill content</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="CloseOrderResult">
+<em class="property">class </em><code class="descname">CloseOrderResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#CloseOrderResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>pass</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ShortUrlResult">
+<em class="property">class </em><code class="descname">ShortUrlResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#ShortUrlResult" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ShortUrlResult.short_url">
+<code class="descname">short_url</code><a class="headerlink" href="#ShortUrlResult.short_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>short url</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="RefundResult">
+<em class="property">class </em><code class="descname">RefundResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#RefundResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every key in result dict refer to a attribute of this class</p>
+<p><a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_4">API</a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="RefundQueryResult">
+<em class="property">class </em><code class="descname">RefundQueryResult</code><span class="sig-paren">(</span><em>WeChatResult</em><span class="sig-paren">)</span><a class="headerlink" href="#RefundQueryResult" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_5">API</a></p>
+<p>Because there are some field need to access by index, so use the result dict to fetch the data you need</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+
+    <strong>Author: Zack Ren</strong>
+    <br>
+    <strong>Email: m6106918@gmail.com</strong>
+
+</body>
+</html><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="WeChatPay.html" title="previous chapter">WeChatPay</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="WeChatPay.html">WeChatPay</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">WeChatResult</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Zack Ren.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/WeChatResult.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

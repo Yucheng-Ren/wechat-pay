@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='wechat-pay-sdk',
     packages=['wechatpay'],
-    version='0.4',
+    version='0.5',
     description='A sdk for wechat pay',
     author='Zack Ren',
     license='MIT',

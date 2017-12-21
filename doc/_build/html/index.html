@@ -1,0 +1,192 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to wechat-pay-sdk’s documentation! &#8212; wechat-pay-sdk 0.4 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="WeChatPay" href="WeChatPay.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-wechat-pay-sdk-s-documentation">
+<h1>Welcome to wechat-pay-sdk’s documentation!<a class="headerlink" href="#welcome-to-wechat-pay-sdk-s-documentation" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>wechat-pay-sdk is an unofficial sdk for WeChat pay. It contains almost all API of WeChat pay.</p>
+<p>Code host at <a class="reference external" href="https://github.com/Narcissist1/wechat-pay">Github</a></p>
+</div></blockquote>
+<div class="section" id="install-wechat-pay-sdk">
+<h2>Install WeChat-Pay-SDK<a class="headerlink" href="#install-wechat-pay-sdk" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Install with <strong>pip</strong>:</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">wechat-pay-sdk</span></code></div></blockquote>
+<p>Or</p>
+<p>Install from source</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="how-to-use">
+<h2>How To Use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Import the WeChatPay class and init it with your own parameters:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wechatpay</span> <span class="k">import</span> <span class="n">WeChatPay</span>
+
+<span class="n">WECHAT_APPID</span> <span class="o">=</span> <span class="s1">&#39;your_app_id&#39;</span>
+<span class="n">WECHAT_MCH_ID</span> <span class="o">=</span> <span class="s1">&#39;your_mch_id&#39;</span>
+<span class="n">WECHAT_NOTIFY_URL</span> <span class="o">=</span> <span class="s1">&#39;your_notify_url&#39;</span>
+<span class="n">WECHAT_PAY_SECRET</span> <span class="o">=</span> <span class="s1">&#39;your_pay_secret&#39;</span>
+<span class="n">WECHAT_CERT</span> <span class="o">=</span> <span class="s1">&#39;path/to/your_cert.pem&#39;</span>
+<span class="n">WECHAT_KEY</span> <span class="o">=</span> <span class="s1">&#39;patch/to/your_key.pem&#39;</span>
+
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">WeChatPay</span><span class="p">(</span><span class="n">WECHAT_APPID</span><span class="p">,</span> <span class="n">WECHAT_MCH_ID</span><span class="p">,</span>
+                   <span class="n">WECHAT_NOTIFY_URL</span><span class="p">,</span> <span class="n">WECHAT_PAY_SECRET</span><span class="p">,</span> <span class="n">WECHAT_CERT</span><span class="p">,</span> <span class="n">WECHAT_KEY</span><span class="p">)</span>
+
+<span class="c1"># post order</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">unifiedorder</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span> <span class="n">out_trade_no</span><span class="o">=</span><span class="n">out_trade_no</span><span class="p">,</span> <span class="n">total_fee</span><span class="o">=</span><span class="n">total_fee</span><span class="p">,</span>
+                             <span class="n">spbill_create_ip</span><span class="o">=</span><span class="n">client_ip</span><span class="p">)</span>
+
+<span class="c1"># order query</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">query_order</span><span class="p">(</span><span class="n">out_trade_no</span><span class="o">=</span><span class="n">out_trade_no</span><span class="p">)</span>
+
+
+<span class="c1"># download bills</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">downloadbill</span><span class="p">(</span><span class="n">bill_date</span><span class="o">=</span><span class="n">bill_date</span><span class="p">,</span> <span class="n">bill_type</span><span class="o">=</span><span class="n">bill_type</span><span class="p">)</span>
+
+<span class="c1"># refund (this method need your cert.pem and key.pem file which need you to download from the official website)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">refund</span><span class="p">(</span><span class="n">out_trade_no</span><span class="p">,</span> <span class="n">out_refund_no</span><span class="p">,</span> <span class="n">total_fee</span><span class="p">,</span> <span class="n">total_fee</span><span class="p">)</span>
+
+<span class="c1"># refund query</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">refund_query</span><span class="p">(</span><span class="n">out_trade_no</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+    <span class="c1"># your code</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="WeChatPay.html">WeChatPay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WeChatResult.html">WeChatResult</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+
+    <strong>Author: Zack Ren</strong>
+    <br>
+    <strong>Email: m6106918@gmail.com</strong>
+
+</body>
+</html><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="WeChatPay.html" title="next chapter">WeChatPay</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to wechat-pay-sdk’s documentation!</a><ul>
+<li><a class="reference internal" href="#install-wechat-pay-sdk">Install WeChat-Pay-SDK</a></li>
+<li><a class="reference internal" href="#how-to-use">How To Use</a></li>
+<li><a class="reference internal" href="#api">API</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+<h3><a href="#">Table Of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="WeChatPay.html">WeChatPay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WeChatResult.html">WeChatResult</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Zack Ren.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
