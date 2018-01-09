@@ -1,4 +1,4 @@
-from wechatpay.pay import WeChatPay
+from wechatpay import WeChatPay
 
 WECHAT_APPID = 'your_app_id'
 WECHAT_MCH_ID = 'your_mch_id'
