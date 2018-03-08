@@ -142,7 +142,7 @@ class RefundQueryResult(WeChatResult):
 WECHAT_CLASS = {
     'unifiedorder': UnifiedorderResult,
     'getsignkey': SendBoxKey,
-    'notifyresult': NotifyResult,
+    'notify_result': NotifyResult,
     'orderquery': OrderResult,
     'error': ErrorResult,
     'downloadbill': DownLoadBillResult,
