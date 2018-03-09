@@ -61,7 +61,8 @@ class NotifyResult(WeChatResult):
         super(NotifyResult, self).__init__(resp)
 
         if self.success and self.result.get('result_code', '') == 'SUCCESS':
-            map(lambda x: setattr(self, x, self.result.get(x)), self.result.keys())
+            for key in self.result.keys():
+                setattr(self, key, self.result.get(key))
         else:
             self.success = False
             self.error_msg = {'return_msg': self.result.get('return_msg'),
@@ -119,7 +120,8 @@ class RefundResult(WeChatResult):
     def __init__(self, resp):
         super(RefundResult, self).__init__(resp)
         if self.success and self.result.get('result_code', '') == 'SUCCESS':
-            map(lambda x: setattr(self, x, self.result.get(x)), self.result.keys())
+            for key in self.result.keys():
+                setattr(self, key, self.result.get(key))
         else:
             self.success = False
             self.error_msg = {'return_msg': self.result.get('return_msg'),
